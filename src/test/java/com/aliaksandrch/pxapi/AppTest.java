@@ -16,32 +16,31 @@ import name.aliaksandrch.px.responses.PhotosResponse;
 import name.aliaksandrch.px.queries.IQuery;
 import name.aliaksandrch.px.resources.PhotoResource;
 
-
 public class AppTest extends TestCase {
 	private PxApi api;
 	PhotoResource photoResource;
-	
-    @Override
+
+	@Override
 	protected void setUp() throws Exception {
-    	this.api = ApiFactory.getInstance().buildApi("cTfa4d6rdhNavAudtN9iU7rfgazsbyOgOOzLIY1G");
-    	this.photoResource= api.getPhotoResource();
+		this.api = ApiFactory.getInstance().buildApi("consumer key");
+		this.photoResource = api.getPhotoResource();
 	}
 
 	public static Test suite() {
-        return new TestSuite(AppTest.class);
-    }
-    
-    public void testPhoto() throws PxApiException{
-    	IQuery q2 = photoResource.getPhoto(1195521);
-        PhotoResponse res = api.fetch(q2);
-        assertEquals(106813, res.getPhoto().getUser().getId());
-    }
+		return new TestSuite(AppTest.class);
+	}
 
-    public void testPhotos() throws PxApiException{ 
-        IQuery q = photoResource.getPhotos(FeatureType.EDITORS).setPage(1);
-        PhotosResponse r = api.fetch(q);
-        List<Photo> l = r.getPhotos();
-        System.out.println(l);
-        System.out.println(l.get(0).getImageURL());
-    }
+	public void testPhoto() throws PxApiException {
+		IQuery q2 = photoResource.getPhoto(1195521);
+		PhotoResponse res = api.fetch(q2);
+		assertEquals(106813, res.getPhoto().getUser().getId());
+	}
+
+	public void testPhotos() throws PxApiException {
+		IQuery q = photoResource.getPhotos(FeatureType.EDITORS).setPage(1);
+		PhotosResponse r = api.fetch(q);
+		List<Photo> l = r.getPhotos();
+		System.out.println(l);
+		System.out.println(l.get(0).getImageURL());
+	}
 }

@@ -112,8 +112,6 @@ public class Photo implements Serializable{
 
     @Override
     public String toString() {
-        return "Photo{" +
-                "photoId=" + photoId +
-                '}';
+        return "Photo{" + "photoId=" + photoId +" imageURL=" + imageURL +'}';
     }
 }

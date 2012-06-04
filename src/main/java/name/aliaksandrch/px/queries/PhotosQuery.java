@@ -1,6 +1,8 @@
 package name.aliaksandrch.px.queries;
 
 import name.aliaksandrch.px.FeatureType;
+import name.aliaksandrch.px.PxApiException;
+import name.aliaksandrch.px.beans.Category;
 import name.aliaksandrch.px.resources.PhotoResource;
 import name.aliaksandrch.px.responses.PhotosResponse;
 
@@ -12,8 +14,8 @@ public class PhotosQuery implements IQuery {
     private static final int DEFAULT_PAGE = 1;
     private String endpoint;
     private FeatureType feature;
-    private String only;
-    private String exclude;
+    private Category only;
+    private Category exclude;
     private PhotoResource.SortingType sort;
     private int page;
     private int resultsPerPage;
@@ -32,10 +34,14 @@ public class PhotosQuery implements IQuery {
         StringBuilder builder = new StringBuilder(50);
         builder.append(endpoint);
         builder.append("?");
+        if(feature == null){
+        	throw new PxApiException("Feature can not be empty");
+        }
         addParameter("feature", feature.getFeatureName(), builder);
-        addParameter("only", only, builder);
-        addParameter("exclude", exclude, builder);
+        addParameter("only", getSafeString(only), builder);
+        addParameter("exclude", getSafeString(exclude), builder);
         addParameter("sort", getSafeString(sort), builder);
+        
         if (page == 0) {
             page = DEFAULT_PAGE;
         }
@@ -74,7 +80,7 @@ public class PhotosQuery implements IQuery {
         return feature;
     }
 
-    public String getOnly() {
+    public Category getOnly() {
         return only;
     }
 
@@ -84,16 +90,16 @@ public class PhotosQuery implements IQuery {
      * @param only
      * @return
      */
-    public PhotosQuery setOnly(String only) {
+    public PhotosQuery setOnly(Category only) {
         this.only = only;
         return this;
     }
 
-    public String getExclude() {
+    public Category getExclude() {
         return exclude;
     }
 
-    public PhotosQuery setExclude(String exclude) {
+    public PhotosQuery setExclude(Category exclude) {
         this.exclude = exclude;
         return this;
     }

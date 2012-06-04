@@ -26,6 +26,7 @@ public class StringUtils {
             sb.append("&").append(paramName).append("=").append(paramValue);
         }
     }
+   
 
     public static void addFirstParameter(String paramName, String paramValue, StringBuilder sb) {
         if (paramValue != null && paramValue.length() != 0) {
