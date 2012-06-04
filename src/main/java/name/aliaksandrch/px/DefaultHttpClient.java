@@ -13,19 +13,23 @@ public class DefaultHttpClient implements IHttpClient {
         
     }
 
-    public String getResponse(String uri) throws IOException {
+    public String getResponse(String uri) throws PxApiException {
         StringBuilder sb = null;
-        URL url = new URL(uri);
-        URLConnection connection = url.openConnection();
-        InputStream input = connection.getInputStream();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-        String inputString;
-        sb = new StringBuilder(256);
-        while ((inputString = reader.readLine()) != null) {
-            sb.append(inputString);
-        }
-        return sb.toString();
+        try{
+        	URL url = new URL(uri);
         
+	        URLConnection connection = url.openConnection();
+	        InputStream input = connection.getInputStream();
+	        BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+	        String inputString;
+	        sb = new StringBuilder(256);
+	        while ((inputString = reader.readLine()) != null) {
+	            sb.append(inputString);
+	        }
+	        return sb.toString();
+        } catch (Exception e) {
+			throw new PxApiException(e);
+		}
     }
 
     public String getResponse(String uri, Object data) {

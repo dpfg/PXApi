@@ -5,6 +5,7 @@ import java.util.List;
 
 import name.aliaksandrch.px.ApiFactory;
 import name.aliaksandrch.px.PxApi;
+import name.aliaksandrch.px.PxApiException;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -30,13 +31,13 @@ public class AppTest extends TestCase {
         return new TestSuite(AppTest.class);
     }
     
-    public void testPhoto() throws IOException{
+    public void testPhoto() throws PxApiException{
     	IQuery q2 = photoResource.getPhoto(1195521);
         PhotoResponse res = api.fetch(q2);
         assertEquals(106813, res.getPhoto().getUser().getId());
     }
 
-    public void testPhotos() throws IOException{ 
+    public void testPhotos() throws PxApiException{ 
         IQuery q = photoResource.getPhotos(FeatureType.EDITORS).setPage(1);
         PhotosResponse r = api.fetch(q);
         List<Photo> l = r.getPhotos();

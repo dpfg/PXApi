@@ -7,7 +7,7 @@ public class ApiFactory {
         return instance;
     }
 
-    public GenericPxAPI buildApi(String consumerKey){
+    public AbstractPxApi buildApi(String consumerKey){
         return new GenericPxAPI(consumerKey);
     }
 

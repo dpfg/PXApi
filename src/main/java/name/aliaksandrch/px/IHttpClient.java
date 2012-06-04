@@ -10,7 +10,7 @@ import java.net.MalformedURLException;
  */
 public interface IHttpClient {
 
-    String getResponse(String uri) throws IOException;
+    String getResponse(String uri) throws PxApiException;
 
     String getResponse(String uri, Object data);
 
