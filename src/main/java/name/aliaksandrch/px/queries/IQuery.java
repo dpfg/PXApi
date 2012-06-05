@@ -6,8 +6,8 @@ package name.aliaksandrch.px.queries;
  */
 public interface IQuery {
 
-    String GET_STRING = "GET";
-    String POST_STRING = "POST";
+    String GET_METHOD = "GET";
+    String POST_METHOD = "POST";
 
     /**
      *

@@ -4,6 +4,8 @@ import name.aliaksandrch.px.FeatureType;
 import name.aliaksandrch.px.queries.IQuery;
 import name.aliaksandrch.px.queries.PhotoQuery;
 import name.aliaksandrch.px.queries.PhotosQuery;
+import name.aliaksandrch.px.queries.SearchPhotoQuery;
+import name.aliaksandrch.px.queries.VoteQuery;
 
 /**
  * @author  Aliaksandr Chaiko
@@ -30,6 +32,10 @@ public class PhotoResource {
             return spelling;
         }
     }
+    
+    public enum SeachType{
+    	BY_TERM, BY_TAG
+    }
 
     public PhotoResource() {
     }
@@ -38,12 +44,27 @@ public class PhotoResource {
         return new PhotosQuery(feature, RESOURCE_ENDPOINT);
     }
 
-    public IQuery getPhoto(int id){
+    public PhotoQuery getPhoto(int id){
         return new PhotoQuery(id, RESOURCE_ENDPOINT);
+    }
+    
+    public SearchPhotoQuery searchPhoto(SeachType type, String value){
+    	SearchPhotoQuery q = new SearchPhotoQuery(RESOURCE_ENDPOINT);
+    	switch (type) {
+			case BY_TAG:
+				q.setTag(value);
+				break;
+			case BY_TERM:
+				q.setTerm(value);
+				break;
+			default:
+				break;
+		}
+    	return q;
     }
 
     public IQuery vote(int id, int vote){
-        return null;
+        return new VoteQuery(id, vote, RESOURCE_ENDPOINT);
     }
 
 }

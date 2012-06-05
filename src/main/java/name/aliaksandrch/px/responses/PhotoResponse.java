@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import name.aliaksandrch.px.beans.Comment;
 import name.aliaksandrch.px.beans.PhotoExtended;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  *
  * @Author Aliaksandr Chaiko
  */
-public class PhotoResponse {
+public class PhotoResponse implements Serializable{
     @SerializedName("photo")
     private PhotoExtended photo;
 

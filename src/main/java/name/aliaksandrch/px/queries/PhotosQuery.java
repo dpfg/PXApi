@@ -2,6 +2,7 @@ package name.aliaksandrch.px.queries;
 
 import name.aliaksandrch.px.FeatureType;
 import name.aliaksandrch.px.PxApiException;
+import name.aliaksandrch.px.PxApiRuntimeException;
 import name.aliaksandrch.px.beans.Category;
 import name.aliaksandrch.px.resources.PhotoResource;
 import name.aliaksandrch.px.responses.PhotosResponse;
@@ -35,7 +36,7 @@ public class PhotosQuery implements IQuery {
         builder.append(endpoint);
         builder.append("?");
         if(feature == null){
-        	throw new PxApiException("Feature can not be empty");
+        	throw new PxApiRuntimeException("Feature can not be empty");
         }
         addParameter("feature", feature.getFeatureName(), builder);
         addParameter("only", getSafeString(only), builder);
@@ -57,7 +58,7 @@ public class PhotosQuery implements IQuery {
      * @return GET or POST string
      */
     public String getMethod() {
-        return GET_STRING;
+        return GET_METHOD;
     }
 
     /**

@@ -1,5 +1,6 @@
 package name.aliaksandrch.px;
 
+import name.aliaksandrch.px.resources.BlogsResource;
 import name.aliaksandrch.px.resources.PhotoResource;
 import name.aliaksandrch.px.resources.UserResource;
 
@@ -12,7 +13,11 @@ public abstract class AbstractPxApi implements PxApi {
 	}
 
 	public UserResource getUserResource() {
-		return null;
+		return new UserResource();
+	}
+	
+	public BlogsResource getBlogsResource(){
+		return new BlogsResource();
 	}
 
 	public void setHttpClient(IHttpClient httpClient) {

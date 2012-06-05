@@ -27,8 +27,18 @@ public class AuthorizedPxAPI extends AbstractPxApi {
 	public <T> T fetch(IQuery query) throws PxApiException {
 		Class<T> clazz = (Class<T>) query.getResponseClass();
 		String url = query.getResourceURI();
-		url += "&consumer_key=" + consumerKey;
-		String response = httpClient.getResponse(url);
+		if(url.contains("?"))
+			url += "&";
+		else 
+			url += "?";
+		url += "consumer_key=" + consumerKey;
+		
+		String response = null;
+		if(query.getMethod() == IQuery.GET_METHOD)
+			response = httpClient.getResponse(url);
+		else if (query.getMethod() == IQuery.POST_METHOD)
+			response = httpClient.getResponse(url, query.getBody());
+		
 		T fromString = (T) marshaller.getFromString(clazz, response);
 		return clazz.cast(fromString);
 	}

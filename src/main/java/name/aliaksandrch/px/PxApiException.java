@@ -1,6 +1,6 @@
 package name.aliaksandrch.px;
 
-public class PxApiException extends RuntimeException{
+public class PxApiException extends Exception{
 	private static final long serialVersionUID = -7645590108692027370L;
 	private Exception e;
 	private String message;

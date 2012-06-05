@@ -32,7 +32,7 @@ public class DefaultHttpClient implements IHttpClient {
 		}
     }
 
-    public String getResponse(String uri, Object data) {
+    public String getResponse(String uri, String data) {
         return null; 
     }
 }

@@ -12,6 +12,6 @@ public interface IHttpClient {
 
     String getResponse(String uri) throws PxApiException;
 
-    String getResponse(String uri, Object data);
+    String getResponse(String uri, String data) throws PxApiException;
 
 }

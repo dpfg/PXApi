@@ -61,7 +61,7 @@ public class PhotoQuery implements IQuery {
      * @return GET or POST string
      */
     public String getMethod() {
-        return GET_STRING;
+        return GET_METHOD;
     }
 
     /**

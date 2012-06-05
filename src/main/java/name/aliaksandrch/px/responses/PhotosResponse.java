@@ -3,9 +3,10 @@ package name.aliaksandrch.px.responses;
 import com.google.gson.annotations.SerializedName;
 import name.aliaksandrch.px.beans.Photo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class PhotosResponse {
+public class PhotosResponse implements Serializable{
     @SerializedName("feature")
     private String feature;
 

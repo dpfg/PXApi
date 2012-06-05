@@ -1,6 +1,7 @@
 package name.aliaksandrch.px;
 
 import name.aliaksandrch.px.queries.IQuery;
+import name.aliaksandrch.px.resources.BlogsResource;
 import name.aliaksandrch.px.resources.PhotoResource;
 import name.aliaksandrch.px.resources.UserResource;
 
@@ -14,6 +15,8 @@ public interface PxApi {
     PhotoResource getPhotoResource();
 
     UserResource getUserResource();
+    
+    BlogsResource getBlogsResource();
 
     void setHttpClient(IHttpClient httpClient);
 
