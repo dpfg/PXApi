@@ -1,6 +1,8 @@
 package name.aliaksandrch.px.beans;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -21,8 +23,9 @@ public class Profile implements Serializable {
     private String about;
     private String locale;
     private int affection;
-    private Contacts[] contacts;
-    
+    private Map<String, String> contacts;
+    private Map<String, List<String>> equipment;
+    private Boolean following;
     
     /* Need to annotate */
     @SerializedName("username")
@@ -114,20 +117,20 @@ public class Profile implements Serializable {
 		this.affection = affection;
 	}
 
-	public Contacts[] getContacts() {
-		return contacts;
-	}
-
-	public void setContacts(Contacts[] contacts) {
-		this.contacts = contacts;
-	}
-
-	public int getUserId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setUserId(int userId) {
-		this.id = userId;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Map<String, String> getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(Map<String, String> contacts) {
+		this.contacts = contacts;
 	}
 
 	public String getUsername() {
@@ -228,6 +231,22 @@ public class Profile implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Map<String, List<String>> getEquipment() {
+		return equipment;
+	}
+
+	public void setEquipment(Map<String, List<String>> equipment) {
+		this.equipment = equipment;
+	}
+
+	public Boolean getFollowing() {
+		return following;
+	}
+
+	public void setFollowing(Boolean following) {
+		this.following = following;
 	}
     
     

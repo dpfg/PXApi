@@ -9,6 +9,7 @@ import name.aliaksandrch.px.AuthorizedPxAPI;
 import name.aliaksandrch.px.PxApiException;
 import name.aliaksandrch.px.queries.IQuery;
 import name.aliaksandrch.px.resources.UserResource;
+import name.aliaksandrch.px.responses.FriendsListResponse;
 import name.aliaksandrch.px.responses.PhotoResponse;
 import name.aliaksandrch.px.responses.UserProfileResponse;
 
@@ -28,10 +29,21 @@ public class AuthorizedApiTest extends AbstractApiTest{
 		assertEquals(8085532, resp.getPhoto().getUser().getId());
 	}
 	
+	/* User profile test */
 	@Test 
 	public void getUserProfile() throws PxApiException{
 		IQuery q = userResource.getUserProfile();
 		UserProfileResponse resp = api.fetch(q);
-		System.out.println(resp.getUser());
+	}
+	@Test 
+	public void getUserProfileById() throws PxApiException{
+		IQuery q = userResource.getUserProfile("3798");
+		UserProfileResponse resp = api.fetch(q);		
+	}
+	
+	@Test 
+	public void getUserFriends() throws PxApiException{
+		IQuery q = userResource.getUserFriendsList("3798");
+		FriendsListResponse resp = api.fetch(q);		
 	}
 }

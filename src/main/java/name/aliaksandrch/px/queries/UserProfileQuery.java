@@ -1,17 +1,28 @@
-package name.aliaksandrch.px.resources;
+package name.aliaksandrch.px.queries;
 
-import name.aliaksandrch.px.queries.IQuery;
 import name.aliaksandrch.px.responses.UserProfileResponse;
 
 public class UserProfileQuery implements IQuery{
 	private final String endpoint;
+	private String id;
 	
 	public UserProfileQuery(String endpoint){
 		this.endpoint = endpoint;
 	}
+	
+	public UserProfileQuery(String id, String endpoint){
+		this.endpoint = endpoint;
+		this.id = id;
+	}
 
 	public String getResourceURI() {
-		return endpoint;
+		if(id == null)
+			return endpoint;
+		else {
+			StringBuilder sb = new StringBuilder(endpoint);
+			sb.append("/").append(id);
+			return sb.toString();
+		}
 	}
 
 	public String getMethod() {

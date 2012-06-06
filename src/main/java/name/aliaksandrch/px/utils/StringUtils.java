@@ -29,8 +29,9 @@ public class StringUtils {
    
 
     public static void addFirstParameter(String paramName, String paramValue, StringBuilder sb) {
+    	sb.append("?").append(paramName).append("=");
         if (paramValue != null && paramValue.length() != 0) {
-            sb.append("?").append(paramName).append("=").append(paramValue);
+            sb.append(paramValue);
         }
     }
 
