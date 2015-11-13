@@ -1,5 +1,5 @@
 ## PxAPI
-This is a library that provides convinient access to the 500px.com from a java apps.
+PxAPI is a library that provides convinient access to the 500px.com from a java apps.
 Please, read [developer guide](http://developers.500px.com) from 500px team to understand all opportunities and limites.
 
 Also, you need to know how do OAuth2 work. I suggest to read [this article](http://hueniverse.com/oauth/)
